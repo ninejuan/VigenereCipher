@@ -1,0 +1,5 @@
+﻿  VigenereChiper.c
+F:\Work\sunrint\VigenereChiper\VigenereChiper.c(12,18): warning C4133: '함수': 'char [36]'과(와) 'LPCWSTR' 사이의 형식이 호환되지 않습니다.
+F:\Work\sunrint\VigenereChiper\VigenereChiper.c(21): warning C4716: 'encrypt': 값을 반환해야 합니다.
+F:\Work\sunrint\VigenereChiper\VigenereChiper.c(25): warning C4716: 'decrypt': 값을 반환해야 합니다.
+  VigenereChiper.vcxproj -> F:\Work\sunrint\VigenereChiper\x64\Debug\VigenereChiper.exe
