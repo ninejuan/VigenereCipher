@@ -9,7 +9,7 @@ enum {
 
 // 함수 선언
 void init();
-void changeConsoleColor(char color); // Console 글자 색상 변경
+void changeConsoleColor(unsigned char color); // Console 글자 색상 변경
 void getInput(char* str, size_t size, const char* prompt); // 암 / 복호화할 문자열 입력
 void encrypt(char* str, const char* key);
 void decrypt(char* str, const char* key);
@@ -31,7 +31,7 @@ int main() {
     printf("##  ##     ##     ##         ####    ## ####   ####     #####    ####    ##  ##    ##    #####     #######   ####     #####\n");
     printf("##  ##     ##     ##  ###    ## #    ##  ###   ## #     ## ##    ## #    ##        ##    ##        ##   ##   ## #     ## ##\n");
     printf(" ####      ##      ##  ##    ##   #  ##   ##   ##   #   ##  ##   ##   #  ##  ##    ##    ##        ##   ##   ##   #   ##  ##\n");
-    printf("  ##	  ####      #####   #######  ##   ##  #######  #### ##  #######   ####    ####   ##        ##   ##   #######  #### ##\n");
+    printf("  ##	  ####      #####   #######  ##   ##  #######  #### ##  #######   ####    ####   ##        ##   ##   #######  ###  ##\n");
     changeConsoleColor(yellow);
     printf("=================================================================================================================================\n");
     changeConsoleColor(white); printf("\n");
@@ -65,7 +65,7 @@ void init() {
     system("mode con cols=130 lines=50");
 }
 
-void changeConsoleColor(unsigned color) {
+void changeConsoleColor(unsigned char color) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
@@ -76,9 +76,9 @@ void getInput(char* str, size_t size, const char* prompt) {
 }
 
 void encrypt(char* str, const char* key) {
-    int count;
+    long long int count;
     printf("\nn중 암호화 >> 1 이상의 n 값을 입력해주세요. (권장 1~2회)\n >> ");
-    scanf_s("%d", &count);
+    scanf_s("%lld", &count);
 
     if (count < 1) {
         printf("올바른 값을 입력해주세요.");
@@ -96,6 +96,7 @@ void encrypt(char* str, const char* key) {
         printf("과도한 다중 암호화는 암호문 반환 지연을 초래할 수 있습니다.\n\n");
         changeConsoleColor(white);
     }
+    printf("암호화 중...");
     int str_size = strlen(str);
     int key_size = strlen(key);
     for (int loop = 0; loop < count; loop++) {
@@ -107,12 +108,12 @@ void encrypt(char* str, const char* key) {
 }
 
 void decrypt(char* str, const char* key) {
-    int count;
+    long long int count;
     changeConsoleColor(red);
     printf("\n이 옵션은 다중 암호화를 진행한 경우에만 설정해주세요.\n다중 암호화를 진행하지 않았을 경우, 1을 입력하세요.\n\n");
     changeConsoleColor(white);
     printf("n중 복호화 >> 1 이상의 n 값을 입력해주세요. (권장 1~2회)\n >> ");
-    scanf_s("%d", &count);
+    scanf_s("%lld", &count);
 
     if (count < 1) {
         printf("올바른 값을 입력해주세요.");
@@ -130,6 +131,7 @@ void decrypt(char* str, const char* key) {
         printf("과도한 다중 복호화는 평문 반환 지연을 초래할 수 있습니다.\n\n");
         changeConsoleColor(white);
     }
+    printf("복호화 중...");
     int str_size = strlen(str);
     int key_size = strlen(key);
     for (int loop = 0; loop < count; loop++) {
